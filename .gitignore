@@ -1,0 +1,6 @@
+/lib/*
+/.idea
+/target
+/test
+dependency-reduced-pom.xml
+/*.jar
