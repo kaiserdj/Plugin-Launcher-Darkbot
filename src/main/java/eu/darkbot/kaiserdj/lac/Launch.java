@@ -13,8 +13,11 @@ import com.github.manolo8.darkbot.gui.tree.components.JFileOpener;
 import com.github.manolo8.darkbot.utils.AuthAPI;
 import com.github.manolo8.darkbot.utils.SystemUtils;
 
+import java.nio.file.Files;
+
 import javax.swing.*;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -50,16 +53,35 @@ public class Launch implements
             JButton github = new JButton("Download client");
             github.addActionListener(x -> SystemUtils.openUrl("https://github.com/kaiserdj/Darkorbit-client/releases/latest"));
 
+            JButton detectClient = new JButton("Automatic client detection");
+            detectClient.addActionListener((a -> {
+                String client = System.getenv("LOCALAPPDATA") + "\\Programs\\darkorbit-client\\DarkOrbit Client.exe";
+
+                if (Files.exists(Paths.get(client))) {
+                    this.config.CUSTOM_FILE = client;
+                    Popups.showMessageAsync("Client detected", "The client has been detected and the location saved.", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    Popups.showMessageAsync("Error", "The client has not been detected.\n" +
+                            "Please check that you have the client installed and try again.\n" +
+                            "If you keep getting error, please enter the client's .exe location manually", JOptionPane.ERROR_MESSAGE);
+                }
+            }));
+
             JButton video = new JButton("Video-tutorial");
             video.addActionListener(x -> SystemUtils.openUrl("https://vimeo.com/501184515"));
 
             Object[] options = {
                     "Basic guide to configure the plugin:",
                     " ",
-                    "1º Download and install the client",
+                    "Download and install the client",
                     github,
-                    "2º Obtain the location of the client's .exe file",
-                    "3º Select in the option \"Launcher.exe\" of the plugin the file \"DarkOrbit Client.exe\"",
+                    " ",
+                    "Try to automatically detect the client's .exe location",
+                    detectClient,
+                    " ",
+                    "Manual way to configure plugin",
+                    "1º Obtain the location of the client's .exe file",
+                    "2º Select in the option \"Launcher.exe\" of the plugin the file \"DarkOrbit Client.exe\"",
                     video
             };
 
