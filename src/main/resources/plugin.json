@@ -7,6 +7,6 @@
 	"features": [
 		"eu.darkbot.kaiserdj.lac.Launch"
 	],
-	"download": "https://github.com/kaiserdj/Darkorbit-client/raw/Plugin-Darkbot/out/Launch.jar",
-	"update": "https://raw.githubusercontent.com/kaiserdj/Darkorbit-client/Plugin-Darkbot/src/main/resources/plugin.json"
+	"download": "https://github.com/kaiserdj/Plugin-Launcher-Darkbot/releases/download/v1.0.0/Launch.jar",
+	"update": "https://github.com/kaiserdj/Plugin-Launcher-Darkbot/raw/main/src/main/resources/plugin.json"
 }
