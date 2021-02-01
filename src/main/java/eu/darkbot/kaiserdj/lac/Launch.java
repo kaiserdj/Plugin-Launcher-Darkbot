@@ -23,7 +23,7 @@ import java.util.Collection;
 
 @Feature(name = "Launch", description = "Open the account you are using at that moment in DarkOrbit Client (with Dosid)")
 public class Launch implements
-        Module,
+        Task,
         InstructionProvider,
         Configurable<Launch.Config>,
         ExtraMenuProvider {
