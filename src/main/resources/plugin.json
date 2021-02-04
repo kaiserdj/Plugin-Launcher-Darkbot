@@ -1,12 +1,12 @@
 {
 	"name": "Launch",
 	"author": "⎛⎝ Kaiserdj™ ⎠⎞",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minVersion": "1.13.17 beta 56",
 	"supportedVersion": "1.13.17 beta 68",
 	"features": [
 		"eu.darkbot.kaiserdj.lac.Launch"
 	],
-	"download": "https://github.com/kaiserdj/Plugin-Launcher-Darkbot/releases/download/v1.0.1/Launch.jar",
+	"download": "https://github.com/kaiserdj/Plugin-Launcher-Darkbot/releases/download/v1.0.2/Launch.jar",
 	"update": "https://github.com/kaiserdj/Plugin-Launcher-Darkbot/raw/main/src/main/resources/plugin.json"
 }
