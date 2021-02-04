@@ -6,7 +6,7 @@ import com.github.manolo8.darkbot.config.types.Option;
 import com.github.manolo8.darkbot.core.itf.Configurable;
 import com.github.manolo8.darkbot.core.itf.ExtraMenuProvider;
 import com.github.manolo8.darkbot.core.itf.InstructionProvider;
-import com.github.manolo8.darkbot.core.itf.Module;
+import com.github.manolo8.darkbot.core.itf.Task;
 import com.github.manolo8.darkbot.extensions.features.Feature;
 import com.github.manolo8.darkbot.gui.utils.Popups;
 import com.github.manolo8.darkbot.gui.tree.components.JFileOpener;
@@ -23,7 +23,7 @@ import java.util.Collection;
 
 @Feature(name = "Launch", description = "Open the account you are using at that moment in DarkOrbit Client (with Dosid)")
 public class Launch implements
-        Module,
+        Task,
         InstructionProvider,
         Configurable<Launch.Config>,
         ExtraMenuProvider {
@@ -36,11 +36,6 @@ public class Launch implements
         if (!VerifierChecker.getAuthApi().requireDonor()) return;
 
         this.main = main;
-    }
-
-    @Override
-    public boolean canRefresh() {
-        return true;
     }
 
     @Override
