@@ -11,6 +11,7 @@ import com.github.manolo8.darkbot.extensions.features.Feature;
 import com.github.manolo8.darkbot.gui.utils.Popups;
 import com.github.manolo8.darkbot.gui.tree.components.JFileOpener;
 import com.github.manolo8.darkbot.utils.AuthAPI;
+import com.github.manolo8.darkbot.utils.RuntimeUtil;
 import com.github.manolo8.darkbot.utils.SystemUtils;
 
 import java.nio.file.Files;
@@ -33,7 +34,8 @@ public class Launch implements
     @Override
     public void install(Main main) {
         if (!Arrays.equals(VerifierChecker.class.getSigners(), getClass().getSigners())) return;
-        if (!VerifierChecker.getAuthApi().requireDonor()) return;
+        AuthAPI authAPI = VerifierChecker.getAuthApi();
+        if (!authAPI.requireDonor() || authAPI.getAuthId() == null) return;
 
         this.main = main;
     }
@@ -118,7 +120,7 @@ public class Launch implements
                             String url = instance + "?dosid=" + sid;
 
                             try {
-                                new ProcessBuilder(this.config.CUSTOM_FILE, "--dosid", url).start();
+                                RuntimeUtil.execute(this.config.CUSTOM_FILE, "--dosid", url);
                             } catch (IOException ioException) {
                                 ioException.printStackTrace();
                             }
