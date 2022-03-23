@@ -14,6 +14,7 @@ import com.github.manolo8.darkbot.utils.AuthAPI;
 import com.github.manolo8.darkbot.utils.RuntimeUtil;
 import com.github.manolo8.darkbot.utils.SystemUtils;
 
+import java.awt.*;
 import java.nio.file.Files;
 
 import javax.swing.*;
@@ -94,6 +95,10 @@ public class Launch implements
         @Option(value = "Launcher.exe", description = "Select the location of the launcher .exe file")
         @Editor(JFileOpener.class)
         public String CUSTOM_FILE;
+
+        @Option(value = "Launch using URL protocol",
+                description = "Uses darkorbit-client:// protocol (disable if it doesn't work on your OS)")
+        public boolean USE_PROTOCOL = true;
     }
 
     private Config config;
@@ -119,10 +124,15 @@ public class Launch implements
                             }
                             String url = instance + "?dosid=" + sid;
 
-                            try {
-                                RuntimeUtil.execute(this.config.CUSTOM_FILE, "--dosid", url);
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
+                            if (config.USE_PROTOCOL && Desktop.isDesktopSupported()) {
+                                SystemUtils.openUrl("darkorbit-client://" + url);
+                            }
+                            else {
+                                try {
+                                    RuntimeUtil.execute(this.config.CUSTOM_FILE, "--dosid", url);
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                }
                             }
                         }
                 ));

@@ -24,7 +24,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>eu.darkbot</groupId>
+            <groupId>com.github.darkbot-reloaded</groupId>
             <artifactId>DarkBot</artifactId>
             <version>master-SNAPSHOT</version>
         </dependency>
